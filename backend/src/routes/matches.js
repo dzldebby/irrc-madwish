@@ -4,12 +4,26 @@ const db = require('../models/index')
 const statuses = require('../helpers/statuses')
 const statusUpdates = require('../helpers/statusUpdates.js')
 
+const matches = require('../helpers/matches')
 
 /* GET matches listing. */
 router.get('/', async (req, res) => {
-    const matches = await db.Match.query().select('MatchID', 'StudentID', 'TeacherID', 'StudentStatusUpdateID', 'TeacherStatusUpdateID', 'LastEmailDate', 'MatchStatus', 'ConfirmedDate')
-    res.json(matches)
-  })
+  const result = await matches.getAllMatches()
+
+  // handle error
+  if (result.err) {
+    // console.log('entered result.err')
+    const err = result.err
+    res.status(500).send({
+      message: err.message,
+      type: 'UnknownError',
+      data: {}
+    })
+    return
+  }
+
+  res.json(result)
+})
 
 /* POST Delete matches from teacher profile */
 const deleteMatches = async ({field, id, nextStatusString, res})=>{ 
