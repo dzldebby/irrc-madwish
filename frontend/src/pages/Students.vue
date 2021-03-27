@@ -1,7 +1,7 @@
 <template>
   <Page>
     <PageHeader slot="header">
-      <a class="logo">All Students</a>
+      <a class="logo">All Students Table</a>
     </PageHeader>
     <!--start of table -->
     <section>
