@@ -131,7 +131,7 @@ export default {
       isPaginated: true,
       paginationPosition: "bottom",
       currentPage: 1,
-      perPage: 10,
+      perPage: 20,
     };
   },
   computed: {

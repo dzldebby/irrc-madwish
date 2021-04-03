@@ -144,7 +144,7 @@ export default {
     return {
       selected: {},
       isPaginated: true,
-      perPage: 10,
+      perPage: 20,
     };
   },
   methods: {
